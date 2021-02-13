@@ -1,0 +1,33 @@
+plugins {
+    id 'java-library'
+}
+
+group 'io.qaguru'
+version '1.0-SNAPSHOT'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.7.0'
+}
+
+dependencies {
+    testImplementation('com.codeborne:selenide:5.18.0')
+    testImplementation('org.slf4j:slf4j-simple:1.7.30')
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+    useJUnitPlatform()
+}
