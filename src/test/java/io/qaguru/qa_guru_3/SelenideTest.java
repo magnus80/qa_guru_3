@@ -5,8 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 class SelenideTest {
@@ -22,8 +21,6 @@ class SelenideTest {
         $$(".Box--condensed li").filterBy(exactText("SoftAssertions"))
                 .shouldHaveSize(1);
         $(By.linkText("SoftAssertions")).click();
-        open("/wiki/SoftAssertions");
-        $$("div>pre").filterBy(text("@ExtendWith"))
-                .shouldHaveSize(1);
+        $("[start = '3']").shouldHave(text("Using JUnit5 extend test class:"));
     }
 }
